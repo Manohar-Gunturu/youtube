@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang='en'><head> 
+<meta charset='UTF-8'> 
+ <meta name='viewport' content='width=device-width, initial-scale=1.0'> 
+ <script src='assets/JS/jquery-3.0.0.min.js' > </script> 
+ <script src='assets/JS/uikindle.js' > </script> 
+ <link rel='stylesheet' type='text/css' href='assets/CSS/drawer.css'>
+ <link href="assets/semantic/components/segment.min.css" rel="stylesheet"> 
+    <link href="assets/semantic/components/site.min.css" rel="stylesheet"> 
+    <link href="assets/semantic/components/form.min.css" rel="stylesheet"> 
+    <link href="assets/semantic/components/message.min.css" rel="stylesheet"> 
+    <link href="assets/semantic/components/checkbox.min.css" rel="stylesheet"> 
+    <link href="assets/semantic/components/button.min.css" rel="stylesheet"> 
+    <link href="assets/semantic/components/reset.min.css" rel="stylesheet"> 
+    <script src="assets/semantic/components/checkbox.min.js">
+    </script> 
+    <script type="text/javascript" id="check_box_sem">
+      $(function(){
+        $('.ui.checkbox').checkbox();
+      });
+    </script></head> 
+<body style='width:100%;height:100%;'><script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  // TODO: Replace with your project's customized code snippet
+  var config = {
+    apiKey: "AIzaSyD4C9hSV2OU0IiDioCZXvqa4FCZY9xv8-U",
+    authDomain: "uikindle.firebaseapp.com",
+    databaseURL: "https://uikindle.firebaseio.com/"
+  };
+  firebase.initializeApp(config);
+ 
+  
+   function writeUserData(n_fname,n_lname,n_email,n_company) {
+     var database = firebase.database().ref('/new_users_youtube');
+     database.push({
+       fname: n_fname,
+       lname:n_lname,  
+       email: n_email,
+       country : n_company
+     });
+	 location.href = "https://drive.google.com/open?id=1aluZN1yXm9O8FeVwXKP889AOrg4Ca9He";
+  }
+  
+  function border(){ 
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var email = document.getElementById("email").value;
+    var countryname = document.getElementById("company").value;
+    writeUserData(fname,lname,email,countryname);
+    return false; 
+  }
+
+</script>
+
+    
+    <div class="draggable centerh_mov" style="top: 20px;">
+      <div class="ui attached message">
+        <div class="header mg">Submit below form to download Sticky Youtube
+        </div>
+        <p class="mg">We will send a download link to your email
+        </p>
+      </div>
+      <form class="ui form attached fluid segment mg" method="pos" onsubmit="return border()">
+        <div class="two fields">
+          <div class="field mg input">
+            <label>First Name
+            </label>
+            <input placeholder="First Name" minlength="3" id="fname" required="" type="text">
+          </div>
+          <div class="field mg input">
+            <label>Last Name
+            </label>
+            <input placeholder="Last Name" id="lname" data-validate="NNNN[]N[]NNN" type="text">
+          </div>
+        </div>
+        <div class="field mg input">
+          <label>Email
+          </label>
+          <input placeholder="Company email address" id="email" data-validate="NNNN[]N[]NNN" type="email" required="">
+        </div>
+        <div class="field mg input">
+          <label>Country
+          </label>
+          <input type="text" id="company" placeholder="Country name" minlength="3" required="">
+        </div>
+        
+        <button class="ui blue submit button" type="submit">Submit
+        </button>
+      </form>
+      
+    </div> 
+</body> 
+ </html>
